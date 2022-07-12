@@ -20,18 +20,18 @@ class Manager(tk.Tk):
         container.configure(
             background=styles.BACKGROUND
         )
-        container.grid_columnfigure(0, weigth=1)
-        container.grid_rowfigure(0, weigth=1)
+        container.grid_columnconfigure(0, weight=1)
+        container.grid_rowconfigure(0, weight=1)
         self.frames = {}
 
         pantallas = (HomeScreen, )
         for F in pantallas:
             frame = F(container, self)
             self.frames[F] = frame
-            frame.grip(grow=0,column=0,sticky=tk.NSEW)
+            frame.grid(row=0,column=0,sticky=tk.NSEW)
         
         self.show_frame(HomeScreen)
 
-        def show_frame(self, container):
-            frame=self.frames[container]
-            frame.tkraise()
+    def show_frame(self, container):
+        frame=self.frames[container]
+        frame.tkraise()
